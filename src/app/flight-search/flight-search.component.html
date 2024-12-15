@@ -1,0 +1,118 @@
+<h2 class="text-md-center">Flight Search</h2>
+
+<div class="row">
+  <div class="col">
+<div class="form-floating">
+<input placeholder="From" class="form-control">
+<label class="text-primary form-label">From</label>
+</div>
+  </div>
+  <div class="col">
+    <div class="form-floating">
+    <input placeholder="Destination" class="form-control">
+    <label class="text-primary form-label">Destination</label>
+</div>
+  </div>
+
+
+<div class="row">
+    <div class="col">
+  <div class="form-floating">
+  <input type="date" placeholder="From Date" class="form-control">
+  <label class="text-primary form-label">From Date</label>
+  </div>
+    </div>
+    <div class="col">
+      <div class="form-floating">
+      <input type="date" placeholder="To Date" class="form-control">
+      <label class="text-primary form-label">To Date</label>
+  </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <label class="form-label text-primary mt-2">Number of Passengers</label>
+    </div>
+    <div class="col">
+<div class="input-group">
+<div class="input-group-text">For</div>
+<input class="form-control" type="number" placeholder="1">
+<div class="input-group-text">Passengers</div>
+
+<button type="submit" class="btn-primary btn" (click)="search()">
+    <i class="fas fa-search"></i>
+</button>
+</div>
+    </div>
+</div>
+
+  <div *ngFor="let search of searchResult">
+        <div class="card text-dark mt-5 text-center">
+            <div class="card-body" style="padding: 20px; background-color: #f5dede;">
+            <h6 class="card-title">{{search.airline}}</h6>
+            <div class="card-title" style="color:#ff3939">
+                    {{search?.remainingnumberofseats}} remaining seats
+            </div>
+
+            <div class="d-grid text-center g-2">
+                <div class="row">
+                    <div class="col">
+                    <div class="col m-3" style="width: 100%;">
+                        <i class="text-primary fas fa-plane-departure" style="font-size: 20px;"></i>
+                    </div>
+                    <div class="col">
+                        <i class="fa-solid fa-location-dot">
+                            {{search.departure?.place}}
+                        </i>
+                    </div>
+                    <div class="col">
+                        <i class="fa-regular" style="font-size: 9px;">
+                            {{search.departure?.time | date}}
+                        </i>
+                    </div>
+                    <div class="col">
+                        <i class="fa-regular" style="font-size: 9px;">
+                            {{search.departure?.time| date:'shortTime'}}
+                        </i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div style="display:flex">
+                        <i class="fa-solid fa-circle" style="margin-top:50px; font-size: 9px;"></i>
+                        <hr style="display: block; width: 100%; margin-top: 55px;">
+                        <i class="fas fa-plane" style="margin-top:48px"></i>
+                    </div>
+                    <i class="fas fa-usd">{{search?.price}}</i>
+                    <br/>
+                    <a class="btn btn-secondary btn-md mt-2" [routerLink]="['/book-flight', search.id]">
+                        <i class="fas fa-ticket"></i>
+                        Book
+                    </a>
+                </div>
+
+                <div class="col">
+                    <div class="col m-3" style="width: 100%;">
+                        <i class="text-primary fas fa-plane-arrival" style="font-size: 20px;"></i>
+                    </div>
+                    <div class="col">
+                        <i class="fa-solid fa-location-dot">
+                            {{search.arrival?.place}}
+                        </i>
+                    </div>
+                    <div class="col">
+                        <i class="fa-regular" style="font-size: 9px;">
+                            {{search.arrival?.time| date}}
+                        </i>
+                    </div>
+                    <div class="col">
+                        <i class="fa-regular" style="font-size:9px">
+                            {{search.arrival?.time| date:'shortTime'}}
+                        </i>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+  </div>
+

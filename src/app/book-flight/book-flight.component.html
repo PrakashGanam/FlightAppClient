@@ -1,0 +1,75 @@
+<h2 class="text-md-center m-5">Book Flight</h2>
+<div class="card text-dark mt-5 text-center">
+    <div class="card-body" style="padding: 20px; background-color: #f5dede;">
+    <h6 class="card-title">{{flightdtl.airline}}</h6>
+    <div class="card-title" style="color:#ff3939">
+            {{flightdtl.remainingnumberofseats}} remaining seats
+    </div>
+
+    <div class="d-grid text-center g-2">
+        <div class="row">
+            <div class="col">
+            <div class="col m-3" style="width: 100%;">
+                <i class="text-primary fas fa-plane-departure" style="font-size: 20px;"></i>
+            </div>
+            <div class="col">
+                <i class="fa-solid fa-location-dot">
+                    {{flightdtl.departure?.place}}
+                </i>
+            </div>
+            <div class="col">
+                <i class="fa-regular" style="font-size: 9px;">
+                    {{flightdtl.departure?.time | date}}
+                </i>
+            </div>
+            <div class="col">
+                <i class="fa-regular" style="font-size: 9px;">
+                    {{flightdtl.departure?.time| date:'shortTime'}}
+                </i>
+            </div>
+        </div>
+        <div class="col">
+            <div style="display:flex">
+                <i class="fa-solid fa-circle" style="margin-top:50px; font-size: 9px;"></i>
+                <hr style="display: block; width: 100%; margin-top: 55px;">
+                <i class="fas fa-plane" style="margin-top:48px"></i>
+            </div>
+            <i class="fas fa-usd">{{flightdtl.price}}</i>
+            <br/>
+            
+        </div>
+
+        <div class="col">
+            <div class="col m-3" style="width: 100%;">
+                <i class="text-primary fas fa-plane-arrival" style="font-size: 20px;"></i>
+            </div>
+            <div class="col">
+                <i class="fa-solid fa-location-dot">
+                    {{flightdtl.arrival?.place}}
+                </i>
+            </div>
+            <div class="col">
+                <i class="fa-regular" style="font-size: 9px;">
+                    {{flightdtl.arrival?.time|date}}
+                </i>
+            </div>
+            <div class="col">
+                <i class="fa-regular" style="font-size:9px">
+                    {{flightdtl.arrival?.time| date:'shortTime'}}
+                </i>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="card-footer d-flex justify-content-center">
+        <label class="form-label mt-5" for="NumberOfSeats">Number of Seats</label>
+        <div class="input-group">
+        <input type="number" class="form-control" id="NumberOfSeats" name="NumberOfSeats" placeholder="Number of Seats">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-ticket"></i>
+            Book
+        </button>
+        </div>
+    </div>
+</div>
